@@ -2,8 +2,8 @@
     <mat-tab label="Next">
         <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
             <div class="cards">
-
-                <mat-card class="card" 
+                @for (live of livesPrevious; track live.id) {
+                    <mat-card class="card" 
                     fxFlex="0 1 calc(33.3% - 11px)" 
                     fxFlex.lt-md="0 1 calc(50% - 11px)"
                     fxFlex.lt-sm="100%">
@@ -14,15 +14,13 @@
 
                     <mat-card-content>
                         <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
+                            {{ live.liveName }}
                         </p>
                     </mat-card-content>
 
                 </mat-card>
+                }
+               
 
             </div>
         </div>

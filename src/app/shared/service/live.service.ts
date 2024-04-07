@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ResponsePageble } from '../model/responsePageable.model';
 import { Observable } from 'rxjs';
 
@@ -18,9 +18,7 @@ export class LiveService {
 
   constructor(private http: HttpClient) { }
 
-  public getLivesWithFlag(flag: string): WritableSignal<Observable<ResponsePageble>> {
-    const responseObservable = this.http.get<ResponsePageble>(`${this.apiUrl}?flag=${flag}`, this.httpOptions);
-
-    return signal(responseObservable)
+  public getLivesWithFlag(flag: string): Observable<ResponsePageble> {
+    return this.http.get<ResponsePageble>(`${this.apiUrl}?flags=${flag}`, this.httpOptions);
   }
 }
