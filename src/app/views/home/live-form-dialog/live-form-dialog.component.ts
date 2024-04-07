@@ -4,7 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { LiveService } from '../../../shared/service/live.service';
 
 @Component({
   selector: 'app-live-form-dialog',
@@ -19,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogActions,
     MatDialogClose,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   templateUrl: './live-form-dialog.component.html',
   styleUrl: './live-form-dialog.component.css'
@@ -31,6 +34,7 @@ export class LiveFormDialogComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<LiveFormDialogComponent>,
+    private liveService: LiveService
   ) {
   }
   ngOnInit(): void {
@@ -38,12 +42,20 @@ export class LiveFormDialogComponent implements OnInit {
       liveName: ['', [Validators.required]],
       channelName: ['', [Validators.required]],
       liveLink: ['', [Validators.required]],
-      liveDate: ['', [Validators.required]],
+      liveDate: ['2024-09-02T20:00:00', [Validators.required]],
       liveTime: ['', [Validators.required]]
     })
   }
 
   cancel(): void {
     this.dialogRef.close();
+    this.liveForm.reset();
+  }
+
+  createLive(): void {
+    this.liveService.createLive(this.liveForm.value).subscribe(result => {
+      this.cancel();
+      this.liveForm.reset();
+    })
   }
 }

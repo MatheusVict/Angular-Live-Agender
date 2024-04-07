@@ -1,5 +1,32 @@
-<h2 mat-dialog-title>Hello there</h2>
+<h2 mat-dialog-title>New Live</h2>
+
+<div mat-dialog-content>
+    <form class="form" [formGroup]="liveForm">
+        <mat-form-field class="full-width">
+            <mat-label>live name</mat-label>
+            <input matInput formControlName="liveName" name="liveName" placeholder="Fill the live name">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        
+        <mat-form-field class="full-width">
+            <mat-label>Channel name</mat-label>
+            <input matInput formControlName="channelName" name="channelName" placeholder="Fill the channel name">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>live embeded link</mat-label>
+            <input matInput formControlName="liveLink" name="liveLink" placeholder="Fill the live link">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+    </form>
+</div>
 
 <mat-dialog-actions>
-  <button mat-button (click)="cancel()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="createLive()">adicionar</button>
+    <button mat-button (click)="cancel()">No Thanks</button>
 </mat-dialog-actions>
