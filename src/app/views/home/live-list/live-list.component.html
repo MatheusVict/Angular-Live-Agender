@@ -1,16 +1,24 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="table">
     <mat-tab label="Next">
         <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
-            <div class="cards">
-                @for (live of livesPrevious; track live.id) {
-                    <mat-card class="card" 
-                    fxFlex="0 1 calc(33.3% - 11px)" 
-                    fxFlex.lt-md="0 1 calc(50% - 11px)"
+            <ng-container class="cards">
+
+                @for (live of nextLives; track live.id) {
+                <mat-card class="card" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
                     fxFlex.lt-sm="100%">
                     >
-                    <mat-card-header>
-
-                    </mat-card-header>
+                    <mat-card-title class="title">
+                       <div class="row">
+                        <p>
+                            <span class="live_name">{{live.liveName}}</span>
+                            <span></span>
+                            <span class="live_date">{{live.liveDate}}</span>
+                        </p>
+                        <p>
+                            <span class="live_channel">{{live.channelName}}</span>
+                        </p>
+                       </div> 
+                    </mat-card-title>
 
                     <mat-card-content>
                         <p>
@@ -20,10 +28,43 @@
 
                 </mat-card>
                 }
-               
 
-            </div>
+
+            </ng-container>
         </div>
     </mat-tab>
-    <mat-tab label="Viewd">viewd</mat-tab>
+    <mat-tab label="Viewd">
+        <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
+            <ng-container class="cards">
+                
+                @for (live of livesPrevious; track live.id) {
+                <mat-card class="card" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
+                    fxFlex.lt-sm="100%">
+                    >
+                    <mat-card-title class="title">
+                        <div class="row">
+                            <p>
+                                <span class="live_name">{{live.liveName}}</span>
+                                <span></span>
+                                <span class="live_date">{{live.liveDate}}</span>
+                            </p>
+                            <p>
+                                <span class="live_channel">{{live.channelName}}</span>
+                            </p>
+                           </div> 
+                    </mat-card-title>
+
+                    <mat-card-content>
+                        <p>
+                            {{ live.liveLink }}
+                        </p>
+                    </mat-card-content>
+
+                </mat-card>
+                }
+
+
+            </ng-container>
+        </div>
+    </mat-tab>
 </mat-tab-group>
