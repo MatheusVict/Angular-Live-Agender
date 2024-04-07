@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { LiveService } from '../../../shared/service/live.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import moment from 'moment';
 
 @Component({
   selector: 'app-live-form-dialog',
@@ -22,7 +24,8 @@ import { LiveService } from '../../../shared/service/live.service';
     MatDialogClose,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule
   ],
   templateUrl: './live-form-dialog.component.html',
   styleUrl: './live-form-dialog.component.css'
@@ -42,7 +45,7 @@ export class LiveFormDialogComponent implements OnInit {
       liveName: ['', [Validators.required]],
       channelName: ['', [Validators.required]],
       liveLink: ['', [Validators.required]],
-      liveDate: ['2024-09-02T20:00:00', [Validators.required]],
+      liveDate: ['', [Validators.required]],
       liveTime: ['', [Validators.required]]
     })
   }
@@ -53,6 +56,8 @@ export class LiveFormDialogComponent implements OnInit {
   }
 
   createLive(): void {
+    let newDate: moment.Moment = moment.utc(this.liveForm.value.liveDate).local();
+    this.liveForm.value.liveDate = newDate.format('YYYY-MM-DD') + 'T' + this.liveForm.value.liveTime;
     this.liveService.createLive(this.liveForm.value).subscribe(result => {
       this.cancel();
       this.liveForm.reset();

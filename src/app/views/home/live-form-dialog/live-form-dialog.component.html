@@ -8,7 +8,7 @@
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-hint>Hint</mat-hint>
         </mat-form-field>
-        
+
         <mat-form-field class="full-width">
             <mat-label>Channel name</mat-label>
             <input matInput formControlName="channelName" name="channelName" placeholder="Fill the channel name">
@@ -22,6 +22,22 @@
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             <mat-hint>Hint</mat-hint>
         </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Live data</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="liveDate" name="liveDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>live Time</mat-label>
+            <input matInput formControlName="liveTime" name="liveTime" type="time" #time placeholder="Fill the live Time">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
 
     </form>
 </div>
