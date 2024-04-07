@@ -22,7 +22,6 @@ import moment from 'moment';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
-    MatNativeDateModule,
     ReactiveFormsModule,
     MatIconModule,
     MatDatepickerModule
