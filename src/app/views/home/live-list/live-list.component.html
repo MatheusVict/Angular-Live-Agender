@@ -1,5 +1,8 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="table">
     <mat-tab label="Next">
+        @if (!next) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
         <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
             <ng-container class="cards">
 
@@ -40,6 +43,9 @@
         </div>
     </mat-tab>
     <mat-tab label="Viewd">
+        @if (!previous) {
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            }
         <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
             <ng-container class="cards">
 
