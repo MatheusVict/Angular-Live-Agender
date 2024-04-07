@@ -4,11 +4,12 @@ import { MatCardModule } from '@angular/material/card';
 import { LiveService } from '../../../shared/service/live.service';
 import { Live } from '../../../shared/model/live.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LocalDateTimePipe } from '../../../shared/pipe/local-date-time.pipe';
 
 @Component({
   selector: 'app-live-list',
   standalone: true,
-  imports: [MatTabsModule, MatCardModule],
+  imports: [MatTabsModule, MatCardModule, LocalDateTimePipe],
   templateUrl: './live-list.component.html',
   styleUrl: './live-list.component.css'
 })
@@ -30,7 +31,7 @@ export class LiveListComponent implements OnInit {
         live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
       })
     });
-    
+
     this.liveService.getLivesWithFlag('next').subscribe(data => {
       this.nextLives = data.content;
       this.nextLives.forEach(live => {
