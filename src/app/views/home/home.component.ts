@@ -17,7 +17,9 @@ export class HomeComponent {
   constructor(public dialog: MatDialog) {}
 
   addLive(): void {
-    const dialogRef = this.dialog.open(LiveFormDialogComponent);
+    const dialogRef = this.dialog.open(LiveFormDialogComponent, {
+      minWidth: '400px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
