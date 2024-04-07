@@ -12,7 +12,11 @@
                             <p>
                                 <span class="live_name">{{live.liveName}}</span>
                                 <span></span>
-                                <span class="live_date">{{live.liveDate | localDateTime}}</span>
+                                <mat-chip class="mat-chip-date">
+                                    <span class="live_date">
+                                        {{live.liveDate | localDateTime}}
+                                    </span>
+                                </mat-chip>
                             </p>
                             <p>
                                 <span class="live_channel">{{live.channelName}}</span>
@@ -49,7 +53,11 @@
                             <p>
                                 <span class="live_name">{{live.liveName}}</span>
                                 <span></span>
-                                <span class="live_date">{{live.liveDate | localDateTime}}</span>
+                                <mat-chip class="mat-chip-date">
+                                    <span class="live_date">
+                                        {{live.liveDate | localDateTime}}
+                                    </span>
+                                </mat-chip>
                             </p>
                             <p>
                                 <span class="live_channel">{{live.channelName}}</span>

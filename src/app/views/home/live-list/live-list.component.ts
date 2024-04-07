@@ -5,11 +5,12 @@ import { LiveService } from '../../../shared/service/live.service';
 import { Live } from '../../../shared/model/live.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LocalDateTimePipe } from '../../../shared/pipe/local-date-time.pipe';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-live-list',
   standalone: true,
-  imports: [MatTabsModule, MatCardModule, LocalDateTimePipe],
+  imports: [MatTabsModule, MatCardModule, MatChipsModule, LocalDateTimePipe],
   templateUrl: './live-list.component.html',
   styleUrl: './live-list.component.css'
 })
