@@ -5,11 +5,13 @@ import {MatButtonModule} from '@angular/material/button'
 import { LiveListComponent } from './live-list/live-list.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LiveFormDialogComponent } from './live-form-dialog/live-form-dialog.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, LiveListComponent],
+  // you need to import MatNativeDateModule on the root module
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, LiveListComponent, MatNativeDateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
