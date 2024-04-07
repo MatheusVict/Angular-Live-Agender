@@ -8,22 +8,25 @@
                     fxFlex.lt-sm="100%">
                     >
                     <mat-card-title class="title">
-                       <div class="row">
-                        <p>
-                            <span class="live_name">{{live.liveName}}</span>
-                            <span></span>
-                            <span class="live_date">{{live.liveDate}}</span>
-                        </p>
-                        <p>
-                            <span class="live_channel">{{live.channelName}}</span>
-                        </p>
-                       </div> 
+                        <div class="row">
+                            <p>
+                                <span class="live_name">{{live.liveName}}</span>
+                                <span></span>
+                                <span class="live_date">{{live.liveDate}}</span>
+                            </p>
+                            <p>
+                                <span class="live_channel">{{live.channelName}}</span>
+                            </p>
+                        </div>
                     </mat-card-title>
 
-                    <mat-card-content>
-                        <p>
-                            {{ live.liveName }}
-                        </p>
+                    <mat-card-content class="content">
+                        <div class="">
+                            <iframe width="560" height="315" [src]="live.urlSafe" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
                     </mat-card-content>
 
                 </mat-card>
@@ -36,7 +39,7 @@
     <mat-tab label="Viewd">
         <div fxLayout="row" fxLayoutAlign="start center" class="live-list">
             <ng-container class="cards">
-                
+
                 @for (live of livesPrevious; track live.id) {
                 <mat-card class="card" fxFlex="0 1 calc(33.3% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
                     fxFlex.lt-sm="100%">
@@ -51,13 +54,16 @@
                             <p>
                                 <span class="live_channel">{{live.channelName}}</span>
                             </p>
-                           </div> 
+                        </div>
                     </mat-card-title>
 
-                    <mat-card-content>
-                        <p>
-                            {{ live.liveLink }}
-                        </p>
+                    <mat-card-content class="content">
+                        <div class="">
+                            <iframe width="560" height="315" [src]="live.urlSafe" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
                     </mat-card-content>
 
                 </mat-card>

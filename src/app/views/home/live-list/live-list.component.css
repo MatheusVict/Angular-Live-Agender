@@ -44,3 +44,9 @@
         font-size: 0.7rem;
     }
 }
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

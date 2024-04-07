@@ -3,6 +3,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { LiveService } from '../../../shared/service/live.service';
 import { Live } from '../../../shared/model/live.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-live-list',
@@ -15,7 +16,7 @@ export class LiveListComponent implements OnInit {
   livesPrevious: Live[] = [];
   nextLives: Live[] = [];
 
-  constructor(private liveService: LiveService) { }
+  constructor(private liveService: LiveService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getLives();
@@ -25,9 +26,16 @@ export class LiveListComponent implements OnInit {
     this.liveService.getLivesWithFlag('previous').subscribe(data => {
       this.livesPrevious = data.content;
       console.log(this.livesPrevious)
+      this.livesPrevious.forEach(live => {
+        live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
+      })
     });
+    
     this.liveService.getLivesWithFlag('next').subscribe(data => {
       this.nextLives = data.content;
+      this.nextLives.forEach(live => {
+        live.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(live.liveLink);
+      })
       console.log(this.nextLives)
     });
   }
