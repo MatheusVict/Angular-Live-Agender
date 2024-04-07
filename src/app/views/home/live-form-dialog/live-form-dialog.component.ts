@@ -1,7 +1,8 @@
-import { Component, Inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -16,18 +17,30 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   templateUrl: './live-form-dialog.component.html',
   styleUrl: './live-form-dialog.component.css'
 })
-export class LiveFormDialogComponent {
+export class LiveFormDialogComponent implements OnInit {
+
+  public liveForm: FormGroup = new FormGroup({});
 
   constructor(
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<LiveFormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { 
-
+  ) {
+  }
+  ngOnInit(): void {
+    this.liveForm = this.formBuilder.group({
+      liveName: ['', [Validators.required]],
+      channelName: ['', [Validators.required]],
+      liveLink: ['', [Validators.required]],
+      liveDate: ['', [Validators.required]],
+      liveTime: ['', [Validators.required]]
+    })
   }
 
   cancel(): void {
